@@ -9,10 +9,13 @@ public class Exercices {
         Utilisez les streams sur la liste en paramètre pour retourner une nouvelle liste
         dont tous les éléments sont en majuscules
          */
+        liste=liste.stream().map((n)->n.toUpperCase()).collect(Collectors.toList());
         return liste;
     }
 
     public List exercice2(List<String> liste){
+
+        liste=liste.stream().filter((n)->!n.equals("INUTILE")).collect(Collectors.toList());
         /*
         Utilisez les streams sur la liste en paramètre pour retourner une nouvelle liste
         dont les string "INUTILE" ont été retirées
@@ -25,7 +28,7 @@ public class Exercices {
         Utilisez les streams sur la liste en paramètre pour retourner une string composée
         de toutes les string de la liste concaténées
          */
-        return "";
+        return  liste.stream().collect(Collectors.joining());
     }
 
 
@@ -36,7 +39,10 @@ public class Exercices {
         2. Retirer tous les éléments "AAA"
         3. Concaténer tous les éléments de la liste pour former une string
          */
-        return "";
+        liste=liste.stream().map((n)->n.toUpperCase()).collect(Collectors.toList());
+        liste=liste.stream().filter((n)->!n.equals("AAA")).collect(Collectors.toList());
+        return  liste.stream().collect(Collectors.joining());
+
     }
 
     public List exercice5(List<Integer> liste){
@@ -44,6 +50,7 @@ public class Exercices {
         Utilisez les streams sur la liste en paramètre afin de retourner une nouvelle liste
         dont les éléments ont été doublés
          */
+        liste=liste.stream().map((n)->n*2).collect(Collectors.toList());
         return liste;
     }
 
@@ -51,7 +58,8 @@ public class Exercices {
         /*
         Utilisez les streams sur la liste en paramètre afin de retourner le produit des éléments de la liste.
          */
-        return 0;
+
+        return liste.stream().reduce((n,l)->l*n).get();
     }
 
     public List exercice7(List<Integer> liste){
