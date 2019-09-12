@@ -66,6 +66,7 @@ public class Exercices {
         /*
         Utilisez les streams pour trouver tous les éléments dont le carré est supérieur à 50. Retournez une liste.
          */
+        liste=liste.stream().filter((n)->(n*n)>50).collect(Collectors.toList());
         return liste;
     }
 
@@ -74,6 +75,7 @@ public class Exercices {
         Utilisez les streams pour trouver le premier chiffre des nombres de la liste passée en paramètre lorsqu'on
          les multiplie par 9.
          */
+        liste=liste.stream().map((n)->Integer.parseInt(String.valueOf(n*9).substring(0,1))).collect(Collectors.toList());
         return liste;
     }
 
@@ -81,13 +83,14 @@ public class Exercices {
         /*
         Créez un stream infini d'entiers et utilisez le pour trouver les 10 premiers nombres divisibles par 3 et par 7.
          */
-        return Arrays.asList();
+        return IntStream.iterate(1,(n)->n+1).filter((n)->n%21==0).limit(10).boxed().collect(Collectors.toList());
+
     }
 
     public List exercice10(){
         /*
         Générez la liste des 20 premiers carrés parfaits grâce à un stream infini.
          */
-        return Arrays.asList();
+        return IntStream.iterate(1,(n)->(n+(2*(int)Math.sqrt(n)+1))).limit(20).boxed().collect(Collectors.toList());
     }
 }
